@@ -1,0 +1,102 @@
+{
+  "name": "copilot-quota-monitor",
+  "displayName": "Copilot Quota Monitor",
+  "description": "Monitor Copilot premium usage across all GitHub accounts",
+  "version": "0.0.1",
+  "publisher": "copilot-quota",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ns81000/Copilot-Quota-Monitor.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copilotQuota.openPanel",
+        "title": "Copilot Quota: Open Panel"
+      },
+      {
+        "command": "copilotQuota.refresh",
+        "title": "Copilot Quota: Refresh Account"
+      },
+      {
+        "command": "copilotQuota.refreshAll",
+        "title": "Copilot Quota: Refresh All"
+      },
+      {
+        "command": "copilotQuota.setup",
+        "title": "Copilot Quota: Setup Accounts"
+      }
+    ],
+    "configuration": {
+      "title": "Copilot Quota Monitor",
+      "properties": {
+        "copilotQuota.autoRefreshInterval": {
+          "type": "number",
+          "default": 10,
+          "minimum": 5,
+          "description": "Auto-refresh interval in minutes"
+        },
+        "copilotQuota.showInStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show status bar icon"
+        },
+        "copilotQuota.statusBarAlignment": {
+          "type": "string",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "default": "right",
+          "description": "Status bar position"
+        },
+        "copilotQuota.refreshCooldown": {
+          "type": "number",
+          "default": 60,
+          "minimum": 30,
+          "description": "Per-account cooldown in seconds"
+        },
+        "copilotQuota.refreshAllCooldown": {
+          "type": "number",
+          "default": 120,
+          "minimum": 60,
+          "description": "Refresh All cooldown in seconds"
+        },
+        "copilotQuota.staleThreshold": {
+          "type": "number",
+          "default": 30,
+          "minimum": 5,
+          "description": "Minutes after which a card is marked as stale"
+        },
+        "copilotQuota.refreshOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically refresh all accounts when VS Code starts"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "prepackage": "pnpm run compile",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^2.22.0",
+    "typescript": "^5.3.0"
+  }
+}
