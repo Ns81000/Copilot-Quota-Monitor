@@ -83,6 +83,12 @@ A guided flow that discovers all GitHub accounts in VS Code, lets you authentica
 
 ## Installation
 
+### One-Command Install
+
+```bash
+curl -L https://github.com/Ns81000/Copilot-Quota-Monitor/releases/download/v0.0.1/copilot-quota-monitor-0.0.1.vsix -o copilot-quota-monitor.vsix && code --install-extension copilot-quota-monitor.vsix && rm copilot-quota-monitor.vsix
+```
+
 ### Quick Install (Recommended)
 
 1. **Download** the latest `.vsix` file from the [Releases](https://github.com/Ns81000/Copilot-Quota-Monitor/releases) page
